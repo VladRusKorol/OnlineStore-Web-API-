@@ -19,5 +19,12 @@ namespace OnlineStore.WebAPI.Controllers
             return category ?? [];
         }
 
+        [HttpGet("{id}",Name = "GetByIdAysncCategories")]
+        public async Task<Category> GetByIdAsync(int id)
+        {
+            Category category = await _context.GetByIdAsync(id);
+            return category;
+        }
+
     }
 }

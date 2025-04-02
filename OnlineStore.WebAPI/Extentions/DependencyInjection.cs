@@ -13,7 +13,7 @@ public static class DependencyInjection
         //services.AddScoped<IRepositoryBase<Category>, CategoryRepository>();
         services.AddScoped<IRepositoryBase<Category>>(x =>
         {
-            return new CategoryRepository(new OnlineStoreDBContext(), "id");
+            return new CategoryRepository(new OnlineStoreDBContext(), "Id");
         });
         /*
                 services.AddScoped<IRepositoryBase<Product>>(x => {
