@@ -10,7 +10,7 @@ using OnlineStore.Persistence;
 namespace OnlineStore.Persistence.Migrations
 {
     [DbContext(typeof(OnlineStoreDBContext))]
-    [Migration("20250401161829_Initial")]
+    [Migration("20250402073033_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

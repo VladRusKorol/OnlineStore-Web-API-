@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineStore.Persistence;
 using OnlineStore.Repository.Interfaces;
+using System.Linq;
 namespace OnlineStore.Repository;
 
-public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : IRepositoryBase<T> where T : class where TContext: DbContext
+public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext, string primaryKeyName) : IRepositoryBase<T> where T : class where TContext: DbContext
 {
     private protected TContext _context = pContext;
-
+    private protected string _primaryKeyName = primaryKeyName;
     virtual public async Task<int> CreateAsync(T entity)
     {
         int id = GetKey(entity);
@@ -17,7 +18,7 @@ public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : I
 
     virtual public async Task<int> DeleteAsync(int id)
     {
-        T? deleteEntity = await _context.Set<T>().FirstOrDefaultAsync(x => (int)x.GetType()!.GetProperty("Id")!.GetValue(x, null)! == id);
+        T? deleteEntity = await _context.Set<T>().FirstOrDefaultAsync(x => (int)x.GetType()!.GetProperty(_primaryKeyName)!.GetValue(x, null)! == id);
         ArgumentNullException.ThrowIfNull(deleteEntity);
         await Task.Run(() => this._context.Set<T>().Remove(deleteEntity));
         await this._context.SaveChangesAsync();
@@ -26,12 +27,13 @@ public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : I
 
     virtual public async Task<List<T>?> GetAllAsync()
     {
-        return await _context.Set<T>().ToListAsync();
+        List<T> list = await _context.Set<T>().ToListAsync<T>();
+        return list;
     }
 
     virtual public async Task<T> GetByIdAysnc(int id)
     {
-        T? findEntity = await _context.Set<T>().FirstOrDefaultAsync(x => (int)x.GetType()!.GetProperty("Id")!.GetValue(x, null)! == id);
+        T? findEntity = await _context.Set<T>().FirstOrDefaultAsync(x => (int)x.GetType()!.GetProperty(_primaryKeyName)!.GetValue(x, null)! == id);
         ArgumentNullException.ThrowIfNull(findEntity);
         return findEntity;
     }

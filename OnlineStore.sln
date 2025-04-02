@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Repository", "O
 		{A4C0E576-2706-4EDF-B0E3-6A6E3D4D6B06} = {A4C0E576-2706-4EDF-B0E3-6A6E3D4D6B06}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.WebAPI", "OnlineStore.WebAPI\OnlineStore.WebAPI.csproj", "{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}"
+	ProjectSection(ProjectDependencies) = postProject
+		{842C6305-750E-476C-AA86-07C37473EE96} = {842C6305-750E-476C-AA86-07C37473EE96}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +39,10 @@ Global
 		{023EBB43-F66C-48B9-8464-83810A378AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{023EBB43-F66C-48B9-8464-83810A378AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{023EBB43-F66C-48B9-8464-83810A378AD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
