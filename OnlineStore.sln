@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.WebAPI", "Onlin
 		{842C6305-750E-476C-AA86-07C37473EE96} = {842C6305-750E-476C-AA86-07C37473EE96}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.MapperDTO", "OnlineStore.MapperDTO\OnlineStore.MapperDTO.csproj", "{B55A617C-4D07-4BCA-A84F-27315688FB67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0AC2830-16FA-4F57-AFDD-F188FE2F4279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B55A617C-4D07-4BCA-A84F-27315688FB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B55A617C-4D07-4BCA-A84F-27315688FB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B55A617C-4D07-4BCA-A84F-27315688FB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B55A617C-4D07-4BCA-A84F-27315688FB67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

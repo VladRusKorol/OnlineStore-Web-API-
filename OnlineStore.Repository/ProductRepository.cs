@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 
 namespace OnlineStore.Repository; 
 
-public class ProductRepository(OnlineStoreDBContext pContext, string primaryKeyName) : AbstractRepositoryBase<Product,OnlineStoreDBContext>(pContext, primaryKeyName)
+public class ProductRepository(OnlineStoreDBContext pContext) : AbstractRepositoryBase<Product,OnlineStoreDBContext>(pContext)
 {
     public async Task<string> ToStringHello()
     {

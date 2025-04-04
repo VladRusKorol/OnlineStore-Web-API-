@@ -10,15 +10,14 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistance(this IServiceCollection services)
     {
         services.AddDbContext<OnlineStoreDBContext>();
-        //services.AddScoped<IRepositoryBase<Category>, CategoryRepository>();
-        services.AddScoped<IRepositoryBase<Category>>(x =>
-        {
-            return new CategoryRepository(new OnlineStoreDBContext(), "Id");
+
+        services.AddScoped<IRepositoryBase<Category>>(x => {
+            return new CategoryRepository(new OnlineStoreDBContext());
         });
-        /*
-                services.AddScoped<IRepositoryBase<Product>>(x => {
-                    return new ProductRepository(new OnlineStoreDBContext(), "id");
-                });*/
+
+        services.AddScoped<IRepositoryBase<Product>>(x => {
+            return new ProductRepository(new OnlineStoreDBContext());
+        });
 
         return services;
     }
