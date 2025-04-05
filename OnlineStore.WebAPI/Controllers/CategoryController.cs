@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineStore.Entity;
+using OnlineStore.MapperDTO;
+using OnlineStore.MapperDTO.CategoryDTO;
 using OnlineStore.Repository;
 using OnlineStore.Repository.Interfaces;
 using SQLitePCL;
@@ -27,9 +29,12 @@ namespace OnlineStore.WebAPI.Controllers
         }
 
         [HttpPost(Name = "CreateCategory")]
-        public async Task<int> CreateAsyncCategories([FromBody] Category newCategory)
+        public async Task<int> CreateAsyncCategories([FromBody] CreateCategoryDTO newCategory)
         {
-            var newId = await _context.CreateAsync(newCategory);
+
+            var newId = await _context.CreateAsync(
+                MapHelper.From_CreateCategoryDTO_To_Entity(newCategory)
+            );
             return newId;
         }
 
@@ -38,6 +43,12 @@ namespace OnlineStore.WebAPI.Controllers
         {
             var removeId = await _context.DeleteAsync(id);
             return removeId;
+        }
+
+        [HttpPut(Name = "UpdateAsynCategory")]
+        public async Task UpdateAsync([FromBody] Category updCategory)
+        {
+            await _context.UpdateAsync(updCategory);
         }
         
 

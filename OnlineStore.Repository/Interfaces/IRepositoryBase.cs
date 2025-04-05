@@ -11,7 +11,7 @@ namespace OnlineStore.Repository.Interfaces
         Task<List<T>?> GetAllAsync();
         Task<T> GetByIdAsync(int id);
         Task<int> CreateAsync(T entity); // создание объекта
-        Task<int> UpdateAsync(T entity); // обновление объекта
+        Task UpdateAsync(T entity); // обновление объекта
         Task<int> DeleteAsync(int id); // удаление объекта по id
     }
 }

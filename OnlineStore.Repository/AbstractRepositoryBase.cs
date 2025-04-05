@@ -15,7 +15,7 @@ public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : I
         _context.Set<T>().Add(entity);
         await _context.SaveChangesAsync();
         string primaryKeyName = getPrimaryKeyName();
-        int maxValue = await GetMaxPrimaryKeyValueAsync();
+        int maxValue = await GetMaxPrimaryKeyFromEntityValueAsync();
         return maxValue;
     }
 
@@ -41,13 +41,10 @@ public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : I
         return findEntity;
     }
 
-    virtual public async Task<int> UpdateAsync(T entity)
+    virtual public async Task UpdateAsync(T entity)
     {
-        string? keyName = getPrimaryKeyName();
-        int id = EF.Property<int>(entity, keyName);
         _context.Set<T>().Update(entity);
         await _context.SaveChangesAsync();
-        return id;
     }
 
     private string getPrimaryKeyName()
@@ -55,7 +52,7 @@ public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : I
         return _context.Model.FindEntityType(typeof(T))!.FindPrimaryKey()!.Properties.Select(x => x.Name).Single();
     }
 
-    public async Task<int> GetMaxPrimaryKeyValueAsync()
+    public  async Task<int> GetMaxPrimaryKeyFromEntityValueAsync()
     {
         // Получаем информацию о первичном ключе
         Type type = typeof(T);
@@ -76,6 +73,12 @@ public abstract class AbstractRepositoryBase<T, TContext>(TContext pContext) : I
 
         return maxValue;
     }
+
+    private int getPrimaryKeyValueFromEntity<U> (T entity) 
+    {
+        return (int)entity.GetType()!.GetProperty(getPrimaryKeyName())!.GetValue(entity, null)!;
+    }
+
 
 }
 

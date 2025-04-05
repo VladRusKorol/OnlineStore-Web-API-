@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.Entity\OnlineStore.Entity.csproj" />
+    <ProjectReference Include="..\OnlineStore.Persistence\OnlineStore.Persistence.csproj" />
+    <ProjectReference Include="..\OnlineStore.Repository\OnlineStore.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

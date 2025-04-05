@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OnlineStore.MapperDTO\OnlineStore.MapperDTO.csproj" />
     <ProjectReference Include="..\OnlineStore.Repository\OnlineStore.Repository.csproj" />
   </ItemGroup>
 
